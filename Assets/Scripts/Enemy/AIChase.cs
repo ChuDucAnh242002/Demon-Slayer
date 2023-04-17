@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class AIChase : MonoBehaviour
 {
-    public GameObject player;
-    [SerializeField] private float moveSpeed;
-    private float distance;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private float chaseDistance = 5f;
+    private Transform playerTransform;
+    private Transform AITransform;
+    private Rigidbody2D AIrb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        AITransform = GetComponent<Transform>();
+        AIrb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        
-        if(distance <= 2){
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        Chase();
+    }
+
+    void Chase(){
+        if (playerTransform == null) return;
+
+        float distanceToTarget = Vector2.Distance(AITransform.position, playerTransform.position);
+
+        // Only chase when in the circle which radius is chase Distance
+        if(distanceToTarget > chaseDistance){
+            return;
         }
+
+        Vector2 direction = new Vector2(playerTransform.position.x - AITransform.position.x, playerTransform.position.y - AITransform.position.y);
+        AIrb.velocity = direction * speed;
     }
 }
