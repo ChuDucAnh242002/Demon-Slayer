@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class FaceDirection : MonoBehaviour
 {
-    [SerializeField] private float damage = 5;
     private BoxCollider2D boxCollider2D;
     // Start is called before the first frame update
     void Start()
@@ -18,15 +17,15 @@ public class SwordAttack : MonoBehaviour
         
     }
 
-    public void Attack(){
+    public void CheckFront(){
         boxCollider2D.enabled = true;
     }
 
-    public void StopAttack(){
+    public void StopCheckFront(){
         boxCollider2D.enabled = false;
     }
 
-    public void ChangeSwordDirection(Vector2 input){
+    public void ChangeFaceDirection(Vector2 input){
         if(input.x == 1){
             transform.localScale = new Vector3 (1f, 1f, 1f);
         } else if (input.x == -1){
@@ -34,17 +33,9 @@ public class SwordAttack : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag == "Enemy"){
-            Health collisionObjectHealth = collision.gameObject.GetComponent<Health>();
-            if(collisionObjectHealth == null){
-                return;
-            }
-            collisionObjectHealth.TakeDamage(damage);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "NPC"){
+            print("NPC");
         }
-    }
-
-    public void SetDamage(float setDamage){
-        damage = setDamage;
     }
 }
