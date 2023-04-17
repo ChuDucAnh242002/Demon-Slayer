@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int health = 15;
+    [SerializeField] private float health = 15;
+    private float initHealth;
+    [SerializeField] private HealthManager healthManager;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        initHealth = health;
     }
 
     // Update is called once per frame
@@ -17,8 +20,11 @@ public class Health : MonoBehaviour
         Die();
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(float damage){
         health -= damage;
+        if (healthManager == null) return;
+        
+        healthManager.SetHealthBar(health, initHealth);
     }
 
     private void Die(){

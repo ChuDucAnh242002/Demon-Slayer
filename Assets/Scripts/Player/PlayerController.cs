@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 input;
     public SwordAttack swordAttack;
+    private Health health;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -46,5 +48,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag == "Enemy"){
+            health.TakeDamage(5);
+        }
+    }
 }
