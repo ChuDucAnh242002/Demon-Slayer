@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         Attack();
         Breathe();
         UseLunarMist();
+        QuitGame();
     }
 
     private void Move(Vector2 input){
@@ -96,4 +98,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(lunarMist.GetLunarMistCooldown());
     }
 
+    private void QuitGame(){
+        if(Input.GetKey(KeyCode.Escape)){
+            SceneManager.LoadScene("MainMenuScene");
+        }
+    }
 }
