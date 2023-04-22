@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Health health;
     private Breath breath;
     public LunarMist lunarMist;
+    private Vector3 SpawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -103,4 +104,5 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("MainMenuScene");
         }
     }
+
 }

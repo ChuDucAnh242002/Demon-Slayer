@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3020357254349145720}
   - component: {fileID: 2249449099870613750}
   - component: {fileID: 8542246041375079120}
+  - component: {fileID: 1812751121705991601}
+  - component: {fileID: 4830726444145248297}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -166,6 +168,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   healthManager: {fileID: 0}
+--- !u!114 &1812751121705991601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713520186504016965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294caf0a363c0b54abf9912dca07e661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breatheAmount: 100
+  useBreathAmount: 40
+  regenerateBreatheAmount: 1
+  breathManager: {fileID: 0}
+  powerUp1Time: 2
+  powerUp3Time: 5
+  swordAttack: {fileID: 8841726642294532307}
+--- !u!114 &4830726444145248297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713520186504016965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66842a7b92c43c04c8b22fdeb720d85c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &7256223389874958910
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +275,7 @@ MonoBehaviour:
   lunarMistTime: 0.2
   lunarMistCooldown: 1
   lunarMistDamage: 50
+  breath: {fileID: 0}
 --- !u!1001 &6411945214464938615
 PrefabInstance:
   m_ObjectHideFlags: 0

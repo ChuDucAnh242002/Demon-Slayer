@@ -28,10 +28,18 @@ public class Health : MonoBehaviour
     }
 
     private void Die(){
-        if(health > 0){
-            return;
-        } else if (health <= 0){
-            Destroy(gameObject);
-        }
+        if(health > 0) return;
+        if(transform.gameObject.tag == "Player") return;
+        Destroy(gameObject);
+    }
+
+    public bool IsDead(){
+        if(health > 0) return false;
+        return true;
+    }
+
+    public void ResetHealth(){
+        health = initHealth;
+        healthManager.SetHealthBar(health, initHealth);
     }
 }
