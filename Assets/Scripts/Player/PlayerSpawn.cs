@@ -7,7 +7,6 @@ public class PlayerSpawn : MonoBehaviour
     public Vector3 respawnPosition;
     private Health health;
     [SerializeField] private FadeScene fadeScene;
-    // [SerializeField] private EnemySpawner enemySpawner;
 
     private void Start(){
         health = GetComponent<Health>();
@@ -25,7 +24,6 @@ public class PlayerSpawn : MonoBehaviour
 
         health.ResetHealth();
         Fade();
-        // RespawnEnemy();
     }
 
     private void Fade(){
@@ -33,8 +31,4 @@ public class PlayerSpawn : MonoBehaviour
         fadeScene.FadeIn();
     }
 
-    // private void RespawnEnemy(){
-    //     enemySpawner.destroyAllEnemy();
-    //     enemySpawner.startSpawnEnemy();
-    // }
 }
