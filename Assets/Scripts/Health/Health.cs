@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] private HealthManager healthManager;
     private Animator animator;
     public float dieAnimationTime = 1f;
+    [SerializeField] private AudioSource slashBeHeadSFX;
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Health : MonoBehaviour
     private void Die(){
         if(health > 0) return;
         if(transform.gameObject.tag == "Player") return;
+        slashBeHeadSFX.Play();
         StartCoroutine(CoroutineDie());
         
     }

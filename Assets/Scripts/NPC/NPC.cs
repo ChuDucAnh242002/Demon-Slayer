@@ -12,8 +12,6 @@ public class NPC : MonoBehaviour
     [SerializeField] private float wordSpeed;
     private int index = 0;
     private bool playerIsClose;
-
-
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +22,7 @@ public class NPC : MonoBehaviour
     private void TalkWithNPC(){
         if(!Input.GetKeyDown(KeyCode.J)) return;
         if(!playerIsClose) return;
-        // print("yest");
+        print("yest");
         if(dialogueText.text == ""){
             dialoguePanel.SetActive(true);
             StartCoroutine(Typing());
@@ -74,5 +72,9 @@ public class NPC : MonoBehaviour
             StopAllCoroutines();
             zeroText();
         }
+    }
+
+    public bool GetPlayerClose(){
+        return playerIsClose;
     }
 }

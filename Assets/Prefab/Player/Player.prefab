@@ -155,6 +155,8 @@ MonoBehaviour:
   moveSpeed: 1
   swordAttack: {fileID: 8841726642294532307}
   lunarMist: {fileID: 1428229404492450541}
+  fastSwordSlashSFX: {fileID: 0}
+  npc: {fileID: 0}
 --- !u!114 &8542246041375079120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +172,7 @@ MonoBehaviour:
   health: 20
   healthManager: {fileID: 0}
   dieAnimationTime: 1
+  slashBeHeadSFX: {fileID: 0}
 --- !u!114 &1812751121705991601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +269,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.30705547, y: -1.0671864}
@@ -294,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983c38f8b26283d4d893832e5aa83513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lunarMistSpeed: 24
+  lunarMistSpeed: 50
   lunarMistTime: 0.2
   lunarMistCooldown: 1
   lunarMistDamage: 50

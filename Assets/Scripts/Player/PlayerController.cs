@@ -14,6 +14,13 @@ public class PlayerController : MonoBehaviour
     private Breath breath;
     public LunarMist lunarMist;
     private Animator animator;
+    private BoxCollider2D boxCollider2D;
+    // [SerializeField] private AudioSource slashBeHeadSFX;
+    // [SerializeField] private AudioSource grassyWalkSFX;
+    [SerializeField] private AudioSource fastSwordSlashSFX;
+    // [SerializeField] private AudioSource cobbleWalkSFX;
+
+    [SerializeField] private NPC npc;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +30,7 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         breath = GetComponent<Breath>();
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -47,6 +55,7 @@ public class PlayerController : MonoBehaviour
         } 
 
         if(input != Vector2.zero){
+            // grassyWalkSFX.Play();
             rb.velocity = input;
         } 
     }
@@ -83,9 +92,12 @@ public class PlayerController : MonoBehaviour
             swordAttack.StopAttack();
             return;
         } 
-        
+        bool playerIsCloseToNPC = npc.GetPlayerClose();
+        if(playerIsCloseToNPC) return;
+
         swordAttack.Attack();
         animator.SetTrigger("NormalAttack");
+        fastSwordSlashSFX.Play();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -107,6 +119,7 @@ public class PlayerController : MonoBehaviour
     private void UseLunarMist(){
         if(!Input.GetKey(KeyCode.L)) return;
         if(!breath.isLunarMistOn()) return;
+        animator.SetTrigger("LunarMist");
         dashLunarMist();
     }
 
@@ -116,8 +129,12 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator coroutineLunarMist(){
         rb.velocity = new Vector2(transform.localScale.x * lunarMist.GetLunarMistSpeed(), 0f);
+        boxCollider2D.enabled = false;
+
         yield return new WaitForSeconds(lunarMist.GetLunarMistTime());
         yield return new WaitForSeconds(lunarMist.GetLunarMistCooldown());
+
+        boxCollider2D.enabled = true;
     }
 
     private void QuitGame(){

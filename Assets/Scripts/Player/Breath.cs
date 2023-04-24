@@ -17,8 +17,8 @@ public class Breath : MonoBehaviour
     private float initBreath;
     private float totalUseBreathAmount;
     private float totalTime;
-    private Color white = new Color(255, 255, 255);
-    private Color red = new Color(229, 34, 34);
+    
+    
     private bool lunarMistOn = false;
 
     // Start is called before the first frame update
@@ -72,13 +72,17 @@ public class Breath : MonoBehaviour
 
     private void PowerUpBreath1(){
         swordAttack.SetDamage(7);
-        spriteRenderer.color = Color.blue;
+        Color POWERUPCOLOR1 = new Color(1, 0.72f, 0.72f);
+        spriteRenderer.color = POWERUPCOLOR1;
+        // spriteRenderer.color = Color.blue;
     }
 
     private void PowerUpBreath3(){
         lunarMistOn = true;
-        spriteRenderer.color = Color.red;
+        Color POWERUPCOLOR3 = new Color(1, 0.6f, 0.6f);
+        spriteRenderer.color = POWERUPCOLOR3 ;
         boxCollider2D.enabled = false;
+        // spriteRenderer.color = Color.red;
     }
 
     public bool isLunarMistOn(){ return lunarMistOn;}
@@ -86,7 +90,7 @@ public class Breath : MonoBehaviour
     private void PowerDown(){
         swordAttack.SetDamage(5);
         lunarMistOn = false;
-        spriteRenderer.color = white;
+        spriteRenderer.color = Color.white;
         totalTime = 0;
         boxCollider2D.enabled = true;
     }
