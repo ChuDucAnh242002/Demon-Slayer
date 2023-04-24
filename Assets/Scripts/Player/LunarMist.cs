@@ -18,6 +18,7 @@ public class LunarMist : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Enemy" && breath.isLunarMistOn()){
+            print("lunar mist");
             Health collisionObjectHealth = collision.gameObject.GetComponent<Health>();
             if(collisionObjectHealth == null){
                 return;

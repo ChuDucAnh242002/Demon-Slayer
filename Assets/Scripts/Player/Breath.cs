@@ -13,6 +13,7 @@ public class Breath : MonoBehaviour
 
     public SwordAttack swordAttack;
     private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider2D;
     private float initBreath;
     private float totalUseBreathAmount;
     private float totalTime;
@@ -24,6 +25,7 @@ public class Breath : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         initBreath = breatheAmount;
         totalUseBreathAmount = 0;
         totalTime = 0;
@@ -76,6 +78,7 @@ public class Breath : MonoBehaviour
     private void PowerUpBreath3(){
         lunarMistOn = true;
         spriteRenderer.color = Color.red;
+        boxCollider2D.enabled = false;
     }
 
     public bool isLunarMistOn(){ return lunarMistOn;}
@@ -85,6 +88,7 @@ public class Breath : MonoBehaviour
         lunarMistOn = false;
         spriteRenderer.color = white;
         totalTime = 0;
+        boxCollider2D.enabled = true;
     }
 
 }

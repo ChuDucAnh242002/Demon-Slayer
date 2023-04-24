@@ -7,11 +7,14 @@ public class Health : MonoBehaviour
     [SerializeField] private float health = 15;
     private float initHealth;
     [SerializeField] private HealthManager healthManager;
+    private Animator animator;
+    public float dieAnimationTime = 1f;
     
     // Start is called before the first frame update
     void Start()
     {
         initHealth = health;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,14 @@ public class Health : MonoBehaviour
     private void Die(){
         if(health > 0) return;
         if(transform.gameObject.tag == "Player") return;
+        StartCoroutine(CoroutineDie());
+        
+    }
+
+    private IEnumerator CoroutineDie(){
+        animator.SetTrigger("Die");
+        yield return new WaitForSeconds(dieAnimationTime);
+
         Destroy(gameObject);
     }
 

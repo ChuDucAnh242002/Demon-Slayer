@@ -24,6 +24,7 @@ public class NPC : MonoBehaviour
     private void TalkWithNPC(){
         if(!Input.GetKeyDown(KeyCode.J)) return;
         if(!playerIsClose) return;
+        // print("yest");
         if(dialogueText.text == ""){
             dialoguePanel.SetActive(true);
             StartCoroutine(Typing());

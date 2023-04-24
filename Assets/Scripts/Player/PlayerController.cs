@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Health health;
     private Breath breath;
     public LunarMist lunarMist;
-    private Vector3 SpawnPoint;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         origintalLocalScale = transform.localScale;
         health = GetComponent<Health>();
         breath = GetComponent<Breath>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         input.y = Input.GetAxisRaw("Vertical");
         Move(input);
         Flip(input);
+        SetAnimation(input);
         Attack();
         Breathe();
         UseLunarMist();
@@ -58,13 +60,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SetAnimation(Vector2 input){
+        if(input.x == 1 || input.x == -1){
+            animator.SetBool("MoveRight", true);
+        } else if(input.y == -1){
+            animator.SetBool("MoveFront", true);
+        } else if(input.y == 1){
+            animator.SetBool("MoveBack", true);
+        } else {
+            ResetAnimation();
+        }
+    }
+
+    private void ResetAnimation(){
+        animator.SetBool("MoveRight", false);
+        animator.SetBool("MoveFront", false);
+        animator.SetBool("MoveBack", false);
+    }
+
     private void Attack(){
         if (!Input.GetKey(KeyCode.J)){
             swordAttack.StopAttack();
             return;
-        } else if (Input.GetKey(KeyCode.J)) {
-            swordAttack.Attack();
-        }
+        } 
+        
+        swordAttack.Attack();
+        animator.SetTrigger("NormalAttack");
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

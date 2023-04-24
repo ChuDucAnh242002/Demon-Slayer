@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - NPC
   - SpawnPoint
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
