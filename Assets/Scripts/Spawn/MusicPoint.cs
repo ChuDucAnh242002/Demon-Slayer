@@ -13,12 +13,6 @@ public class MusicPoint : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision){
-    //     if(collision.CompareTag("Player")){
-            
-    //     }
-    // }
-
     private void OnTriggerExit2D(Collider2D collsion){
         if(collsion.CompareTag("Player")){
             boxCollider2D.isTrigger = false;
@@ -26,8 +20,4 @@ public class MusicPoint : MonoBehaviour
             combatScoreFast.Play();
         }
     }
-
-    // public bool GetPlayerPass(){
-    //     return isPlayerPass;
-    // }
 }

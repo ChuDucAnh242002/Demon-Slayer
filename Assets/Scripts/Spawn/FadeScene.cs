@@ -12,12 +12,6 @@ public class FadeScene : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void FadeOut(){
         animator.SetTrigger("FadeOut");
     }

@@ -32,12 +32,6 @@ public class Breath : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void useBreathe(){
         if(breatheAmount <= 0) return;
         breatheAmount -= useBreathAmount * Time.deltaTime;

@@ -12,12 +12,6 @@ public class SwordAttack : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Attack(){
         boxCollider2D.enabled = true;
     }

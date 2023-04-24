@@ -15,10 +15,7 @@ public class PlayerController : MonoBehaviour
     public LunarMist lunarMist;
     private Animator animator;
     private BoxCollider2D boxCollider2D;
-    // [SerializeField] private AudioSource slashBeHeadSFX;
-    // [SerializeField] private AudioSource grassyWalkSFX;
     [SerializeField] private AudioSource fastSwordSlashSFX;
-    // [SerializeField] private AudioSource cobbleWalkSFX;
 
     [SerializeField] private NPC npc;
 
@@ -119,6 +116,7 @@ public class PlayerController : MonoBehaviour
     private void UseLunarMist(){
         if(!Input.GetKey(KeyCode.L)) return;
         if(!breath.isLunarMistOn()) return;
+        // if(isDashing) return;
         animator.SetTrigger("LunarMist");
         dashLunarMist();
     }
@@ -130,11 +128,13 @@ public class PlayerController : MonoBehaviour
     private IEnumerator coroutineLunarMist(){
         rb.velocity = new Vector2(transform.localScale.x * lunarMist.GetLunarMistSpeed(), 0f);
         boxCollider2D.enabled = false;
+        // isDashing = true;
 
         yield return new WaitForSeconds(lunarMist.GetLunarMistTime());
         yield return new WaitForSeconds(lunarMist.GetLunarMistCooldown());
 
         boxCollider2D.enabled = true;
+        // isDashing = false;
     }
 
     private void QuitGame(){

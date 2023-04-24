@@ -190,7 +190,7 @@ MonoBehaviour:
   regenerateBreatheAmount: 1
   breathManager: {fileID: 0}
   powerUp1Time: 2
-  powerUp3Time: 5
+  powerUp3Time: 3
   swordAttack: {fileID: 8841726642294532307}
 --- !u!114 &4830726444145248297
 MonoBehaviour:
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lunarMistSpeed: 50
-  lunarMistTime: 0.2
+  lunarMistTime: 0.5
   lunarMistCooldown: 1
   lunarMistDamage: 50
   breath: {fileID: 0}

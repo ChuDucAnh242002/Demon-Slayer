@@ -9,6 +9,7 @@ TagManager:
   - NPC
   - SpawnPoint
   - EnemyBullet
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
