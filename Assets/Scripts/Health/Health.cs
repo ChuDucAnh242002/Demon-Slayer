@@ -10,12 +10,14 @@ public class Health : MonoBehaviour
     private Animator animator;
     public float dieAnimationTime = 1f;
     [SerializeField] private AudioSource slashBeHeadSFX;
+    // private BoxCollider2D boxCollider2D;
     
     // Start is called before the first frame update
     void Start()
     {
         initHealth = health;
         animator = GetComponent<Animator>();
+        // boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator CoroutineDie(){
         animator.SetTrigger("Die");
+        // boxCollider2D.enabled = false;
         yield return new WaitForSeconds(dieAnimationTime);
 
         Destroy(gameObject);

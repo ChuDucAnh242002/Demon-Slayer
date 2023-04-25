@@ -20,14 +20,18 @@ Genre: Action RPG, Isometric
 
 # Authors
 * **Judy** - Team Leader, Game Developer
-* **Martins** - Game Developer
-* **SG** - Pixel artist
 * **Cheese** - Sound Designer
 * **Chandler** - Sound Designer
+* **SG** - Pixel artist
+* **ChadCat** - Pixel artist
 
 # License
 
 # How to play
+WASD to move
+J to use normal attack
+K to breathe
+L to use Mist Gliding skil
 
 # Credits
 

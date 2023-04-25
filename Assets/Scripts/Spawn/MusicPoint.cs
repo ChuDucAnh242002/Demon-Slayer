@@ -15,7 +15,6 @@ public class MusicPoint : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collsion){
         if(collsion.CompareTag("Player")){
-            boxCollider2D.isTrigger = false;
             villageScore.Stop();
             combatScoreFast.Play();
         }
