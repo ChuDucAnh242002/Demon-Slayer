@@ -30,9 +30,7 @@ public class AIChase : MonoBehaviour
         float distanceToTarget = Vector2.Distance(AITransform.position, playerTransform.position);
 
         // Only chase when in the circle which radius is chase Distance
-        if(distanceToTarget > chaseDistance){
-            return;
-        }
+        if(distanceToTarget > chaseDistance) return;
 
         Vector2 direction = new Vector2(playerTransform.position.x - AITransform.position.x, playerTransform.position.y - AITransform.position.y);
         AIrb.velocity = direction * speed;

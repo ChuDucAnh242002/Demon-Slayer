@@ -12,11 +12,10 @@ public class NPC : MonoBehaviour
     [SerializeField] private float wordSpeed;
     private int index = 0;
     private bool playerIsClose;
-    // Update is called once per frame
+    
     void Update()
     {
         TalkWithNPC();
-        
     }
 
     private void TalkWithNPC(){
@@ -43,14 +42,14 @@ public class NPC : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
-    IEnumerator Typing(){
+    private IEnumerator Typing(){
         foreach(char letter in dialogue[index].ToCharArray()){
             dialogueText.text += letter;
             yield return new WaitForSeconds(1/wordSpeed);
         }
     }
 
-    public void NextLine(){
+    private void NextLine(){
         if(index < dialogue.Length - 1){
             index++;
             dialogueText.text = "";
@@ -60,11 +59,14 @@ public class NPC : MonoBehaviour
         }
     }
 
+    // Player is close to NPC
     private void OnTriggerEnter2D(Collider2D collider){
         if (collider.CompareTag("Player")){
             playerIsClose = true;
         }
     }
+
+    // Player is not closed to NPC
     private void OnTriggerExit2D(Collider2D collider){
         if (collider.CompareTag("Player")){
             playerIsClose = false;

@@ -22115,7 +22115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1509106997}
-  - component: {fileID: 1509106996}
+  - component: {fileID: 1509106998}
   m_Layer: 0
   m_Name: HealthManager
   m_TagString: Untagged
@@ -22123,19 +22123,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1509106996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509106995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b3f22594706014c9f35c65faff1e95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 1648803403}
 --- !u!4 &1509106997
 Transform:
   m_ObjectHideFlags: 0
@@ -22151,6 +22138,19 @@ Transform:
   m_Father: {fileID: 840670317}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1509106998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509106995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab657d758b7259b4fad81473117e7673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiBar: {fileID: 1648803403}
 --- !u!1 &1545993763
 GameObject:
   m_ObjectHideFlags: 0
@@ -74457,7 +74457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042395366}
-  - component: {fileID: 2042395365}
+  - component: {fileID: 2042395367}
   m_Layer: 0
   m_Name: BreathManager
   m_TagString: Untagged
@@ -74465,19 +74465,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2042395365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042395364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2492f1471e8a7a54b949c3cf509771fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  breathBar: {fileID: 859742780}
 --- !u!4 &2042395366
 Transform:
   m_ObjectHideFlags: 0
@@ -74493,6 +74480,19 @@ Transform:
   m_Father: {fileID: 840670317}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2042395367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042395364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab657d758b7259b4fad81473117e7673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiBar: {fileID: 859742780}
 --- !u!1001 &966373380762041385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74586,6 +74586,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1487310776}
     - target: {fileID: 1428229404492450541, guid: 2cd8c71f14b409e4a898665cf47996c7, type: 3}
+      propertyPath: lunarMistTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428229404492450541, guid: 2cd8c71f14b409e4a898665cf47996c7, type: 3}
       propertyPath: lunarMistSpeed
       value: 100
       objectReference: {fileID: 0}
@@ -74612,7 +74616,7 @@ PrefabInstance:
     - target: {fileID: 1812751121705991601, guid: 2cd8c71f14b409e4a898665cf47996c7, type: 3}
       propertyPath: breathManager
       value: 
-      objectReference: {fileID: 2042395365}
+      objectReference: {fileID: 2042395367}
     - target: {fileID: 1812751121705991601, guid: 2cd8c71f14b409e4a898665cf47996c7, type: 3}
       propertyPath: useBreathAmount
       value: 50
@@ -74752,6 +74756,6 @@ PrefabInstance:
     - target: {fileID: 8542246041375079120, guid: 2cd8c71f14b409e4a898665cf47996c7, type: 3}
       propertyPath: healthManager
       value: 
-      objectReference: {fileID: 1509106996}
+      objectReference: {fileID: 1509106998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd8c71f14b409e4a898665cf47996c7, type: 3}

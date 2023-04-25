@@ -31,9 +31,7 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.CompareTag("Player")){
             Health collisionObjectHealth = collision.gameObject.GetComponent<Health>();
-            if(collisionObjectHealth == null){
-                return;
-            }
+            if(collisionObjectHealth == null) return;
             collisionObjectHealth.TakeDamage(damage);
             Destroy(gameObject);
         }

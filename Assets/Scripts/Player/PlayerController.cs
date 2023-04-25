@@ -16,11 +16,10 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private BoxCollider2D boxCollider2D;
     [SerializeField] private AudioSource fastSwordSlashSFX;
-
     [SerializeField] private NPC npc;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         origintalLocalScale = transform.localScale;
@@ -30,52 +29,48 @@ public class PlayerController : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
         Move(input);
-        Flip(input);
+        FlipCharacterSprite(input);
         SetAnimation(input);
         Attack();
         Breathe();
-        UseLunarMist();
+        UseMistGliding();
         QuitGame();
     }
 
     private void Move(Vector2 input){
-
+        // User don't press Move key
         if(input == Vector2.zero){
             rb.velocity = Vector2.zero;
-           return; 
+            return; 
         } 
 
-        if(input != Vector2.zero){
-            // grassyWalkSFX.Play();
-            rb.velocity = input;
-        } 
+        rb.velocity = input;
     }
 
-    // Change character direction when move
-    private void Flip(Vector2 input){
+    private void FlipCharacterSprite(Vector2 input){
         if(input.x == 1){
-            transform.localScale = new Vector3(origintalLocalScale.x, origintalLocalScale.y, origintalLocalScale.z);
+            transform.localScale = origintalLocalScale;
         } else if (input.x == -1){
-            transform.localScale = new Vector3(-origintalLocalScale.x, origintalLocalScale.y, origintalLocalScale.z);
+            Vector3 flipXLocalScale = new Vector3(-origintalLocalScale.x, origintalLocalScale.y, origintalLocalScale.z);
+            transform.localScale = flipXLocalScale;
         }
     }
 
     private void SetAnimation(Vector2 input){
-        if(input.x == 1 || input.x == -1){
+        if((input.x == 1 || input.x == -1) && input.y == 0){
             animator.SetBool("MoveRight", true);
-        } else if(input.y == -1){
+        } else if(input.y == -1 && input.x ==0){
             animator.SetBool("MoveFront", true);
-        } else if(input.y == 1){
+        } else if(input.y == 1 && input.x == 0){
             animator.SetBool("MoveBack", true);
-        } else {
+        } else if(input == Vector2.zero){
             ResetAnimation();
-        }
+        } 
     }
 
     private void ResetAnimation(){
@@ -85,14 +80,11 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Attack(){
-        if (!Input.GetKey(KeyCode.J)){
-            swordAttack.StopAttack();
-            return;
-        } 
+        if (!Input.GetKey(KeyCode.J)) return;
+ 
         bool playerIsCloseToNPC = npc.GetPlayerClose();
         if(playerIsCloseToNPC) return;
 
-        swordAttack.Attack();
         animator.SetTrigger("NormalAttack");
         fastSwordSlashSFX.Play();
     }
@@ -109,32 +101,28 @@ public class PlayerController : MonoBehaviour
             return;
         } 
         else if (Input.GetKey(KeyCode.K)){
-            breath.useBreathe();
+            breath.UseBreathe();
         }
     }
 
-    private void UseLunarMist(){
+    private void UseMistGliding(){
         if(!Input.GetKey(KeyCode.L)) return;
-        if(!breath.isLunarMistOn()) return;
-        // if(isDashing) return;
+        if(!breath.isMistGlidingOn()) return;
         animator.SetTrigger("LunarMist");
-        dashLunarMist();
+        dashMistGliding();
     }
 
-    private void dashLunarMist(){
-        StartCoroutine(coroutineLunarMist());
+    private void dashMistGliding(){
+        StartCoroutine(coroutineMistGlding());
     }
 
-    private IEnumerator coroutineLunarMist(){
+    private IEnumerator coroutineMistGlding(){
         rb.velocity = new Vector2(transform.localScale.x * lunarMist.GetLunarMistSpeed(), 0f);
         boxCollider2D.enabled = false;
-        // isDashing = true;
 
         yield return new WaitForSeconds(lunarMist.GetLunarMistTime());
-        yield return new WaitForSeconds(lunarMist.GetLunarMistCooldown());
 
         boxCollider2D.enabled = true;
-        // isDashing = false;
     }
 
     private void QuitGame(){
